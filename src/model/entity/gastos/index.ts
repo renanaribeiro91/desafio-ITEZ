@@ -1,19 +1,25 @@
 import { Entity, Column, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Payment } from "./payment";
 
-@Entity("User")
-export class User {
+@Entity("Gastos")
+export class Gastos {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
   @Column("character varying")
-  email: string;
+  Entretenimento: string;
 
   @Column("character varying")
-  password: string;
+  Alimentação: string;
 
   @Column("character varying")
-  statusCadastro: string;
+  Educação: string;
+
+  @Column("character varying")
+  Saúde: string;
+
+  @Column("character varying")
+  Transporte: string;
 }
 
-export default { User };
+export default { Gastos };
