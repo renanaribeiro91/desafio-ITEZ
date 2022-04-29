@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.7"
 services:
   node:
     build:
@@ -15,7 +15,7 @@ services:
 
   db:
     container_name: postgresql_db
-    image: postgres
+    image: postgres:14.2-alpine
     restart: always
     env_file:
       - .env
@@ -26,7 +26,7 @@ services:
         ipv4_address: 172.20.0.2
 
     volumes:
-      - ./data/db:/var/lib/postgresql/data
+      - ./data/pgadmin:/var/lib/postgress/storage
   pgadmin:
     container_name: pgadmin4
     image: dpage/pgadmin4
@@ -34,7 +34,8 @@ services:
     env_file:
       - .env
     volumes:
-      - ./data/pgadmin-data:/var/lib/pgadmin
+      - ./data/pgadmin:/var/lib/pgadmin4/storage
+
     ports:
       - "5050:80"
     depends_on:
