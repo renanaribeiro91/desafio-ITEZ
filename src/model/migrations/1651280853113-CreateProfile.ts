@@ -20,10 +20,21 @@ export class CreateProfile1651280853113 implements MigrationInterface {
           {
             name: "email",
             type: "varchar(200)",
+            isUnique: true,
           },
           {
             name: "password",
             type: "varchar(200)",
+          },
+          {
+            name: "created_at",
+            type: "typestamp",
+            default: "now",
+          },
+          {
+            name: "updated_at",
+            type: "typestamp",
+            default: "now",
           },
         ],
       })

@@ -8,6 +8,8 @@
     "pbuild": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
     "build": "node dist/server.js",
     "start": " ts-node-dev -r tsconfig-paths/register --poll  --inspect --exit-child --respawn --transpile-only --ignore-watch node_modules --no-notify src/server.ts",
+    "typeorm": "./node_modules/typeorm/cli.js",
+    "migrate": "npm run typeorm migration:generate -- -n",
     "test": "jest"
   },
   "devDependencies": {
