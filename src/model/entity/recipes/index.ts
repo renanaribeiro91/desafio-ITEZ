@@ -6,10 +6,10 @@ class Recipes {
   id: string;
 
   @PrimaryGeneratedColumn("increment")
-  cod_receita: number;
+  cod_receitas: number;
 
   @Column("character varying", { length: 45 })
-  desc_receita: string;
+  desc_receitas: string;
 
   @CreateDateColumn()
   created_at: Date;
