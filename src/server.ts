@@ -2,8 +2,8 @@ import express from "express";
 import "dotenv/config";
 import { routes } from "./routes";
 import cors from "cors";
-import "./data-source";
-// import "./db/connect";
+// import "./data-source";
+import "./db";
 // import 'express-async-errors'
 
 const app = express();
