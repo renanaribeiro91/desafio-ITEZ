@@ -6,6 +6,7 @@ import {
   UpdateDateColumn,
   PrimaryGeneratedColumn,
 } from "typeorm";
+import { Categories } from "../../interfaces";
 
 @Entity("Despesas")
 export class Despesas {
@@ -17,6 +18,9 @@ export class Despesas {
 
   @Column("character varying", { length: 45 })
   desc_despesas: string;
+
+  @Column("text")
+  categories: Categories;
 
   @CreateDateColumn()
   created_at: Date;
