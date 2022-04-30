@@ -12,25 +12,16 @@ export class Despesas {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
-  @Column("character varying")
-  Entretenimento: string;
+  @PrimaryGeneratedColumn("increment")
+  cod_despesas: number;
 
-  @Column("character varying")
-  Alimentação: string;
-
-  @Column("character varying")
-  Educação: string;
-
-  @Column("character varying")
-  Saúde: string;
-
-  @Column("character varying")
-  Transporte: string;
+  @Column("character varying", { length: 45 })
+  desc_despesas: string;
 
   @CreateDateColumn()
   created_at: Date;
 
-  @CreateDateColumn()
+  @UpdateDateColumn()
   updated_at: Date;
 }
 
