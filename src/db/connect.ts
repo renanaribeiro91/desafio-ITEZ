@@ -1,13 +1,13 @@
-import { Connection, createConnection } from "typeorm";
+// import { Connection, createConnection } from "typeorm";
 
-const dbConnect = async (): Promise<Connection> => {
-  try {
-    await createConnection();
-    console.log("connect");
-  } catch (err) {
-    console.log("Error while connecting to the database", err);
-    return err;
-  }
-};
+// const dbConnect = async (): Promise<Connection> => {
+//   try {
+//     await createConnection();
+//     console.log("connect");
+//   } catch (err) {
+//     console.log("Error while connecting to the database", err);
+//     return err;
+//   }
+// };
 
-export default dbConnect;
+// export default dbConnect;

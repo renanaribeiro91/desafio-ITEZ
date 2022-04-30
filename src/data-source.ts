@@ -1,11 +1,12 @@
-import "reflect-metadata"
-import { DataSource } from "typeorm"
+import "reflect-metadata";
+import { DataSource, createConnection } from "typeorm";
 import "dotenv/config";
+import { User } from "./src/model/entity";
 
 export const AppDataSource = new DataSource({
- type: process.env.TYPEORM_CONNECTION,
+  type: process.env.TYPEORM_CONNECTION,
   host: process.env.TYPEORM_HOST,
-  port:process.env.TYPEORM_PORT,
+  port: process.env.TYPEORM_PORT,
   username: process.env.TYPEORM_USERNAME,
   password: process.env.TYPEORM_PASSWORD,
   database: process.env.TYPEORM_DATABASE,
@@ -17,6 +18,13 @@ export const AppDataSource = new DataSource({
   cli: {
     entitiesDir: "src/model/entity/**",
     migrationDir: "src/model/migrations/**",
-    suscribersDir: "src/suscriber/**"
-})
+    suscribersDir: "src/suscriber/**",
+  },
+});
 
+AppDataSource.initialize()
+  .then(async () => {
+    await createConnection();
+    console.log("connected");
+  })
+  .catch((error) => console.log(error));
