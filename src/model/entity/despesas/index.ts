@@ -1,8 +1,14 @@
-import { Entity, Column, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Payment } from "./payment";
+import {
+  Entity,
+  Column,
+  OneToMany,
+  CreateDateColumn,
+  UpdateDateColumn,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 
-@Entity("Gastos")
-export class Gastos {
+@Entity("Despesas")
+export class Despesas {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
@@ -20,6 +26,12 @@ export class Gastos {
 
   @Column("character varying")
   Transporte: string;
+
+  @CreateDateColumn()
+  created_at: Date;
+
+  @CreateDateColumn()
+  updated_at: Date;
 }
 
-export default { Gastos };
+export default { Despesas };

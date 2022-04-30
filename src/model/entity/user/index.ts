@@ -1,5 +1,12 @@
-import { Entity, Column, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Payment } from "./payment";
+import {
+  Entity,
+  Column,
+  OneToMany,
+  CreateDateColumn,
+  UpdateDateColumn,
+  PrimaryGeneratedColumn,
+} from "typeorm";
+
 
 @Entity("User")
 export class User {
@@ -12,8 +19,11 @@ export class User {
   @Column("character varying")
   password: string;
 
-  @Column("character varying")
-  statusCadastro: string;
+  @CreateDateColumn()
+  created_at: Date;
+
+  @UpdateDateColumn()
+  updated_at: Date;
 }
 
 export default { User };

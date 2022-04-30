@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import { Connection, createConnection } from "typeorm";
 
-export const dbConnect = async (): Promise<Connection> => {
+const dbConnect = async (): Promise<Connection> => {
   try {
     await createConnection();
     console.log("connect");
@@ -10,3 +10,5 @@ export const dbConnect = async (): Promise<Connection> => {
     return err;
   }
 };
+
+export default dbConnect;
