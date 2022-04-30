@@ -8,6 +8,7 @@ import {
 } from "typeorm";
 import { Categories } from "../../interfaces";
 import { v4 as uuid } from "uuid";
+import User from "../User";
 
 @Entity("Despesas")
 export class Expenses {
@@ -22,6 +23,9 @@ export class Expenses {
 
   @Column("text")
   categories: Categories;
+
+  @OneToMany(() => User, (moviment) => moviment.despesas)
+  User: User[];
 
   @CreateDateColumn()
   created_at: Date;

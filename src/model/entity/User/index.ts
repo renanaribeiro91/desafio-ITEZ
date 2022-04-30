@@ -24,11 +24,11 @@ export class User {
   @Column("character varying")
   password: string;
 
-  @Column("integer")
-  cod_receita: number;
+  // @Column("integer")
+  // cod_receita: number;
 
-  @Column("integer")
-  cod_despesa: number;
+  // @Column("integer")
+  // cod_despesa: number;
 
   @ManyToOne(() => Recipes, (recipe) => recipe.User, {
     cascade: true,

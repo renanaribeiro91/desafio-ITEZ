@@ -1,5 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
 import { v4 as uuid } from "uuid";
+import User from "../User";
 
 @Entity("receitas")
 class Recipes {
@@ -11,6 +12,9 @@ class Recipes {
 
   @Column("character varying", { length: 45 })
   desc_receitas: string;
+
+  @OneToMany(() => User, (moviment) => moviment.receitas)
+  User: User[];
 
   @CreateDateColumn()
   created_at: Date;
