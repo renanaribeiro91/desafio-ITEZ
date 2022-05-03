@@ -1,4 +1,3 @@
-import "reflect-metadata";
 import { DataSource } from "typeorm";
 import "dotenv/config";
 
@@ -11,13 +10,13 @@ const AppDataSource = new DataSource({
   database: process.env.TYPEORM_DATABASE,
   synchronize: true,
   logging: false,
-  entities: ["dist/**/*.entity.js"],
-  migrations: [__dirname + "/model/migrations/**/*.{ts,js}"],
-  subscribers: [__dirname + "/subscriber/**/*.{ts,js}"],
+  entities: ["dist/**/*.entities.js"],
+  migrations: ["src/model/migrations/**.{ts,js}"],
+  // subscribers: "src/subscriber/**.{ts,js}",
   // cli: {
-  //   entitiesDir: "src/model/entity/**",
-  //   migrationDir: [__dirname + "/model/migrations/**"],
-  //   suscribersDir: [__dirname + "/suscriber/**"],
+  //   entitiesDir: "/model/entity/**"],
+  //   migrationDir: "/model/migrations/**"],
+  //   suscribersDir: "/suscriber/**"],
   // },
 });
 

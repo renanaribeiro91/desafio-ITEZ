@@ -1,7 +1,5 @@
-import "reflect-metadata";
-import { createConnection, Connection } from "typeorm";
-import  AppDataSource  from "./dataSource";
-import "dotenv/config";
+import { createConnection } from "typeorm";
+import AppDataSource from "./dataSource";
 
 AppDataSource.initialize()
   .then(async () => {

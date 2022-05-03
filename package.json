@@ -9,12 +9,13 @@
     "build": "node dist/server.js",
     "start": " ts-node-dev -r tsconfig-paths/register --poll  --inspect --exit-child --respawn --transpile-only --ignore-watch node_modules --no-notify src/server.ts",
     "typeorm": "typeorm-ts-node-commonjs",
-    "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run -d src/db/dataSource.ts",
+    "migration:run": "ts-node --transpile-only ./node_modules/typeorm/cli.js migration:run -d src/db/dataSource.ts",  
     "schema:sync": "yarn run typeorm schema:sync -- -d src/db/dataSource.ts",
     "migration:show": "yarn run typeorm migration:show -- -d src/db/dataSource.ts",
     "migration:generate": "yarn run typeorm migration:generate -- -d src/db/dataSource.ts",
     "migration:create": "yarn run typeorm migration:create",
-    "test": "jest"
+    "test": "jest",
+    "docker:rm":"docker rm -fv $(docker ps -aq)"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",
