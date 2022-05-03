@@ -10,13 +10,13 @@ import { Categories } from "../../interfaces";
 import { v4 as uuid } from "uuid";
 import User from "../User";
 
-@Entity("Despesas")
+@Entity("Expenses")
 export class Expenses {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
   @PrimaryGeneratedColumn("increment")
-  cod_despesas: number;
+  cod_expenses: number;
 
   // @Column("character varying", { length: 45 })
   // desc_despesas: string;
@@ -24,14 +24,15 @@ export class Expenses {
   @Column("text")
   categories: Categories;
 
-  @OneToMany(() => User, (moviment) => moviment.despesas)
-  User: User[];
+  @OneToMany(() => User, (user) => user.Expenses)
+  @JoinColumn({ name: "User" })
+  user: User[];
 
-  @CreateDateColumn()
-  created_at: Date;
+  @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
+  createdAt: Date;
 
-  @UpdateDateColumn()
-  updated_at: Date;
+  @Column({ type: "timestamp", onUpdate: "CURRENT_TIMESTAMP", nullable: true })
+  updatedAt: Date;
 
   constructor() {
     if (!this.id) this.id = uuid();

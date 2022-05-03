@@ -2,25 +2,26 @@ import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
 import { v4 as uuid } from "uuid";
 import User from "../User";
 
-@Entity("receitas")
+@Entity("Recipes")
 class Recipes {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
   @PrimaryGeneratedColumn("increment")
-  cod_receitas: number;
+  cod_recipes: number;
 
   @Column("character varying", { length: 45 })
-  desc_receitas: string;
+  desc_recipes: string;
 
-  @OneToMany(() => User, (moviment) => moviment.receitas)
-  User: User[];
+  @OneToMany(() => User, (user) => user.Recipes)
+  @JoinColumn({ name: "User" })
+  user: User[];
 
-  @CreateDateColumn()
-  created_at: Date;
+  @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
+  createdAt: Date;
 
-  @UpdateDateColumn()
-  updated_at: Date;
+  @Column({ type: "timestamp", onUpdate: "CURRENT_TIMESTAMP", nullable: true })
+  updatedAt: Date;
 
   constructor() {
     if (!this.id) this.id = uuid();

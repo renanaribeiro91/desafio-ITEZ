@@ -7,8 +7,8 @@ import {
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
-import Recipes from './Recipes';
-import Expenses from './Expenses';
+import Recipes from "../Recipes";
+import Expenses from "../Expenses";
 
 @Entity("User")
 export class User {
@@ -25,30 +25,31 @@ export class User {
   password: string;
 
   @Column("integer")
-  cod_receita: number;
+  cod_recipes: number;
 
   @Column("integer")
-  cod_despesa: number;
+  cod_expenses: number;
 
   @ManyToOne(() => Recipes, (recipe) => recipe.User, {
     cascade: true,
     eager: true,
   })
-  @JoinColumn({ name: "cod_receita" })
-  receitas: Recipes;
+  
+  @JoinColumn({ name: "cod_recipes" })
+  recipes: Recipes;
 
   @ManyToOne(() => Expenses, (expense) => expense.User, {
     cascade: true,
     eager: true,
   })
-  @JoinColumn({ name: "cod_despesa" })
-  despesas: Expenses;
+  @JoinColumn({ name: "cod_expenses" })
+  expenses: Expenses;
 
-  @CreateDateColumn()
-  created_at: Date;
+  @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
+  createdAt: Date;
 
-  @UpdateDateColumn()
-  updated_at: Date;
+  @Column({ type: "timestamp", onUpdate: "CURRENT_TIMESTAMP", nullable: true })
+  updatedAt: Date;
 
   constructor() {
     if (!this.id) this.id = uuid();

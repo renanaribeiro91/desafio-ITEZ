@@ -1,9 +1,8 @@
-import { Router, Request, Response } from "express";
+import { Router } from "express";
+import { userRoutes } from "./user/";
 
-const routes = Router();
+const router = Router();
 
-routes.get("/", (req: Request, res: Response) => {
-  return res.send({ msg: "testando rota" });
-});
+router.use("/user", userRoutes);
 
-export { routes };
+export { router };

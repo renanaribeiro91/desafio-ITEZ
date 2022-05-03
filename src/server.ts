@@ -1,20 +1,17 @@
 import "reflect-metadata";
 import express from "express";
 import "dotenv/config";
-import { routes } from "./routes";
+import { router } from "./routes";
 import cors from "cors";
-// import "./data-source";
 import "./db";
-// import 'express-async-errors'
+import "express-async-errors";
 
 const app = express();
 
 app.use(express.json());
 app.use(cors());
-app.use(routes);
+app.use(router);
 
 app.listen(process.env.PORT, () => {
   console.log(`server is run on PORT ${process.env.PORT}`);
 });
-
-export { app };

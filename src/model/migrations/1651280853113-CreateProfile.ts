@@ -11,7 +11,6 @@ export class CreateProfile1651280853113 implements MigrationInterface {
             type: "uuid",
             isPrimary: true,
             generationStrategy: "uuid",
-            
           },
           {
             name: "name",
@@ -29,19 +28,40 @@ export class CreateProfile1651280853113 implements MigrationInterface {
           {
             name: "created_at",
             type: "timestamp",
-         
           },
           {
             name: "updated_at",
             type: "timestamp",
-         
           },
         ],
+      })
+    );
+
+    await queryRunner.createForeignKey(
+      "movimentos",
+      new TableForeignKey({
+        name: "Recipes",
+        columnNames: ["cod_recipes"],
+        referencedColumnNames: ["cod_recipes"],
+        referencedTableName: "recipes",
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE",
+      })
+    );
+    await queryRunner.createForeignKey(
+      "movimentos",
+      new TableForeignKey({
+        name: "Expenses",
+        columnNames: ["cod_expenses"],
+        referencedColumnNames: ["cod_expenses"],
+        referencedTableName: "expenses",
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE",
       })
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("profiles");
+    await queryRunner.dropTable("user");
   }
 }

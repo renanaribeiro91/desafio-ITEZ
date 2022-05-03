@@ -17,11 +17,11 @@ export const createUser = async (User: IUserRequest): Promise<User> => {
 };
 
 export const updateUser = async (idUser: string): Promise<User> => {
-  const usersUpdate = await userRepo.findOne(idUser);
+  const usersUpdate = await userRepo.findOneBy(idUser);
   return await userRepo.remove(usersUpdate);
 };
 
 export const removeUser = async (idUser: string): Promise<User> => {
-  const usersRemove = await userRepo.findOne(idUser);
+  const usersRemove = await userRepo.findOneBy(idUser);
   return await userRepo.save(usersRemove);
 };
