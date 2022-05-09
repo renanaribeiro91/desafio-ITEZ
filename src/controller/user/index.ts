@@ -71,7 +71,10 @@ const updateUserController = async (
   }
 };
 
-const removeUserController = async (req, res) => {
+const removeUserController = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
   const { id } = req.params;
   const user = await findOneUser({ id });
   if (!user) {
