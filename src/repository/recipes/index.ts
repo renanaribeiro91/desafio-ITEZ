@@ -1,5 +1,5 @@
 import { AppDataSource } from "../../db/dataSource";
-import { Recipes } from "../../model/entities/Recipes";
+import { Recipes } from "../../model/entities";
 import { IRecipesRequest } from "../../interfaces";
 
 const RecipesRepo = AppDataSource.getRepository(Recipes);
@@ -12,7 +12,9 @@ export const findOneRecipes = async (idRecipes: string): Promise<Recipes> => {
   return await RecipesRepo.findOneBy(idRecipes);
 };
 
-export const createRecipes = async (Recipes: IRecipesRequest): Promise<Recipes> => {
+export const createRecipes = async (
+  Recipes: IRecipesRequest
+): Promise<Recipes> => {
   return await RecipesRepo.create(Recipes);
 };
 

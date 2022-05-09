@@ -1,10 +1,11 @@
-import "reflect-metadata";
 import express from "express";
-import "dotenv/config";
 import { router } from "./routes";
 import cors from "cors";
-import "./db";
+import "reflect-metadata";
+import "dotenv/config";
+import "./db/dataSource";
 import "express-async-errors";
+
 
 const app = express();
 

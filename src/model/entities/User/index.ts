@@ -2,6 +2,8 @@ import {
   Entity,
   Column,
   OneToMany,
+  ManyToOne,
+  JoinColumn,
   CreateDateColumn,
   UpdateDateColumn,
   PrimaryGeneratedColumn,
@@ -10,8 +12,8 @@ import { v4 as uuid } from "uuid";
 import Recipes from "../Recipes";
 import Expenses from "../Expenses";
 
-@Entity("User")
-export class User {
+@Entity("user")
+export class Users {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
@@ -30,15 +32,18 @@ export class User {
   @Column("integer")
   cod_expenses: number;
 
-  @ManyToOne(() => Recipes, (recipe) => recipe.User, {
+  // @ManyToOne(() => Recipes, (recipe) => recipe.user)
+  // recipes: Recipes;
+  @ManyToOne(() => Recipes, (recipe) => recipe.user, {
     cascade: true,
     eager: true,
   })
-  
   @JoinColumn({ name: "cod_recipes" })
   recipes: Recipes;
 
-  @ManyToOne(() => Expenses, (expense) => expense.User, {
+  // @ManyToOne(() => Expenses, (expense) => expense.user)
+  // expenses: Expenses;
+  @ManyToOne(() => Expenses, (expense) => expense.user, {
     cascade: true,
     eager: true,
   })
@@ -56,4 +61,4 @@ export class User {
   }
 }
 
-export default { User };
+export default { Users };

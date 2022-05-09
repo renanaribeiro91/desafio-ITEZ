@@ -1,5 +1,5 @@
 import { AppDataSource } from "../../db/dataSource";
-import { Expenses } from "../../model/entities/Expenses";
+import { Expenses } from "../../model/entities"
 import { IExpensesRequest } from "../../interfaces";
 
 const ExpensesRepo = AppDataSource.getRepository(Expenses);

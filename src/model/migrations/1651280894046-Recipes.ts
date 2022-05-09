@@ -4,7 +4,7 @@ export class Recipes1651280894046 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "receitas",
+        name: "recipes",
         columns: [
           {
             name: "id",
@@ -13,13 +13,12 @@ export class Recipes1651280894046 implements MigrationInterface {
             generationStrategy: "uuid",
           },
           {
-            name: "cod_receita",
+            name: "cod_recipes",
             type: "serial",
-            isPrimary: true,
             generationStrategy: "increment",
           },
           {
-            name: "desc_receita",
+            name: "desc_recipes",
             type: "varchar",
             length: "45",
             isNullable: false,
@@ -38,6 +37,6 @@ export class Recipes1651280894046 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("receitas");
+    await queryRunner.dropTable("recipes");
   }
 }

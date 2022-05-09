@@ -13,6 +13,14 @@ module.exports = {
   plugins: [
     ["@babel/plugin-proposal-decorators", { legacy: true }],
     [
+      "@babel/plugin-transform-modules-commonjs",
+      {
+        allowTopLevelThis: true,
+        loose: true,
+        lazy: true,
+      },
+    ],
+    [
       "module-resolver",
       {
         alias: {

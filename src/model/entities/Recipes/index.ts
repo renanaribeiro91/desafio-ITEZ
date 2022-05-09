@@ -2,7 +2,7 @@ import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
 import { v4 as uuid } from "uuid";
 import User from "../User";
 
-@Entity("Recipes")
+@Entity("recipes")
 class Recipes {
   @PrimaryGeneratedColumn("uuid")
   id: string;
@@ -13,8 +13,7 @@ class Recipes {
   @Column("character varying", { length: 45 })
   desc_recipes: string;
 
-  @OneToMany(() => User, (user) => user.Recipes)
-  @JoinColumn({ name: "User" })
+  @OneToMany(() => User, (users) => users.recipes)
   user: User[];
 
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })

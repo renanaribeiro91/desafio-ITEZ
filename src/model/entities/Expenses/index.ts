@@ -6,11 +6,11 @@ import {
   UpdateDateColumn,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { Categories } from "../../interfaces";
+import { Categories } from "../../../interfaces";
 import { v4 as uuid } from "uuid";
 import User from "../User";
 
-@Entity("Expenses")
+@Entity("expenses")
 export class Expenses {
   @PrimaryGeneratedColumn("uuid")
   id: string;
@@ -24,8 +24,7 @@ export class Expenses {
   @Column("text")
   categories: Categories;
 
-  @OneToMany(() => User, (user) => user.Expenses)
-  @JoinColumn({ name: "User" })
+  @OneToMany(() => User, (users) => users.expenses)
   user: User[];
 
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
